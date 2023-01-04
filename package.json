@@ -1,0 +1,26 @@
+{
+  "name": "playwright-demo",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Examples of using Playwright to handle common case testing scenarios.",
+  "author": "Anthony Hastings <ar.hastings@gmail.com> (https://antwan1986.github.io/)",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@playwright/test": "^1.28.1",
+    "dotenv": "^16.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1"
+  },
+  "scripts": {
+    "lint:format": "time prettier --check .",
+    "prepare": "husky install",
+    "show-report": "playwright show-report",
+    "test:debug": "playwright test --debug",
+    "test:gui": "playwright test --headed",
+    "test:headless": "playwright test",
+    "test:tagged": "yarn run test:headless --grep @form"
+  }
+}
