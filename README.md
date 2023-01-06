@@ -6,17 +6,13 @@ Playwright was created specifically to accommodate the needs of end-to-end testi
 
 ## Playwright vs Cypress
 
-?????
-
-https://www.browserstack.com/guide/playwright-vs-cypress
-
-- Testing Library style queries built into Playwright.
-- Playwright comes with an official [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) that can trigger test runs and debug tests.
-- Writing tests is more akin to writing native scripts with the use of async/await and not having to rely on chaining and nested of commands like Cypress requires.
-- Playwright has first-class support for parallel running of tests on a single machine both locally and on CI without a subscription or account required.
+- Testing Library style queries built directly into Playwright where Cypress needs them added as a plugin.
+- Playwright comes with an official [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright) that can trigger test runs and act as a debugger.
+- Writing tests in Playwright is more like writing native scripts with the use of async/await. Cypress uses a command structure that relies on nesting and chaining and isn't as intuitive.
+- Playwright has first-class support for the parallel running of tests on a single machine both locally and on CI without using a paid solution. It can also run tests within the same file in parallel, where Cypress can only run entire test files in parallel. The official way to handle parallelism in Cypress is with a paid solution called [Cypress Cloud](https://cypress.io/cloud).
 - Playwright can re-run code blocks until attached assertion is true (via [Polling](https://playwright.dev/docs/test-assertions#polling) or [Retrying](https://playwright.dev/docs/test-assertions#retrying)).
-- Playwright supports multiple languages, including JavaScript, Java, Python, .NET, and C# where Cypress only supports JavaScript.
-- Playwright has built-in ability to [launch a process](https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests) and wait for a chosen port to respond before running tests.
+- Playwright supports tests being written in multiple languages including JavaScript, Java, Python, .NET, and C# where Cypress only supports JavaScript.
+- Playwright has built-in ability to [launch a process](https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests) and wait for a chosen port to respond before running tests. Cypress expects this to be handled externally.
 
 ## Debugging Tests
 
@@ -43,6 +39,8 @@ The traces, videos and screenshots will appear automatically linked to relevant 
 - [Assertions](https://playwright.dev/docs/test-assertions)
 - [Authentication](https://playwright.dev/docs/auth)
 - [Annotations](https://playwright.dev/docs/test-annotations)
+- [Command Line Tools](https://playwright.dev/docs/cli)
+- [Continuous Integration](https://playwright.dev/docs/ci)
 - [Debugging Tests](https://playwright.dev/docs/debug)
 - [Emulation](https://playwright.dev/docs/emulation)
 - [Environment Variables](https://playwright.dev/docs/test-parameterize#passing-environment-variables)
@@ -51,5 +49,4 @@ The traces, videos and screenshots will appear automatically linked to relevant 
 - [Screenshots](https://playwright.dev/docs/screenshots)
 - [Videos](https://playwright.dev/docs/videos)
 - [Example: Testing Multiple Roles](https://playwright.dev/docs/auth#testing-multiple-roles-together)
-
-- https://alisterbscott.com/2021/10/27/five-reasons-why-playwright-is-better-than-cypress/
+- [Research: Playwright vs Cypress](https://www.browserstack.com/guide/playwright-vs-cypress)
