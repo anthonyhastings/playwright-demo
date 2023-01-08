@@ -1,0 +1,55 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  CRM_USERNAME: dummy-user
+  CRM_PASSWORD: dummy-password
+  PLAYWRIGHT_BROWSERS_PATH: '${{ github.workspace }}/pw-browsers'
+
+jobs:
+  test:
+    name: Playwright Tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shardIndex: [1, 2]
+        shardTotal: [2]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Node.js Version
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+
+      - name: Install Application Dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+
+      - name: Install Playwright Browsers & System Dependencies
+        run: |
+          yarn playwright install --with-deps chromium && \
+          echo "Listing $PLAYWRIGHT_BROWSERS_PATH:" && \
+          echo "---" && \
+          ls -al $PLAYWRIGHT_BROWSERS_PATH
+
+      - name: Run Tests
+        run: yarn run test:headless --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+
+      - name: Collecting Artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: shard-${{ matrix.shardIndex }}-playwright-report
+          path: |
+            playwright-report/
+            test-results/
+            test-results.xml
+          retention-days: 7

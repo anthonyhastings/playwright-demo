@@ -12,7 +12,7 @@ test.describe('Environment variables', () => {
     await page
       .getByLabel(/username/i)
       .type(process.env.CRM_USERNAME, { delay: 75 });
-    console.log('now filling in the password...');
+
     await page
       .getByLabel(/password/i)
       .type(process.env.CRM_PASSWORD, { delay: 75 });
@@ -20,13 +20,6 @@ test.describe('Environment variables', () => {
     await page.getByRole('button', { name: /sign in/i }).click();
 
     await expect(page.getByText(/atomic crm/i)).toBeVisible();
-
-    const thingy = await page.evaluate(() => {
-      console.log('Hello World!');
-      return document.querySelector('#root');
-    });
-
-    console.log(thingy);
 
     await page.pause();
   });
