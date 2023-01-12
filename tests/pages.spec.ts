@@ -27,4 +27,17 @@ test.describe('Page related assertions', () => {
     await page.getByRole('link', { name: /^writing tests$/i }).click();
     await expect(page).toHaveTitle('Writing Tests | Playwright');
   });
+
+  test('Triggers an alert within the page via a script', async ({ page }) => {
+    await page.goto('https://playwright.dev/docs/dialogs');
+
+    page.on('dialog', (dialog) => {
+      console.log(dialog.message());
+      dialog.accept();
+    });
+
+    await page.evaluate(() =>
+      alert('An example alert that Playwright can interact with.')
+    );
+  });
 });

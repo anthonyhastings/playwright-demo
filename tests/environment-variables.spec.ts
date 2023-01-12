@@ -4,10 +4,10 @@ test.describe('Environment variables', () => {
   test('Clicks links and assets on page title', async ({ page }) => {
     await page.goto('https://marmelab.com/react-admin-crm');
 
-    await page.pause();
-
     await page.getByRole('button', { name: /profile/i }).click();
     await page.getByRole('menuitem', { name: /logout/i }).click();
+
+    await page.pause();
 
     await page
       .getByLabel(/username/i)
@@ -20,7 +20,5 @@ test.describe('Environment variables', () => {
     await page.getByRole('button', { name: /sign in/i }).click();
 
     await expect(page.getByText(/atomic crm/i)).toBeVisible();
-
-    await page.pause();
   });
 });
