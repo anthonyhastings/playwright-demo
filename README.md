@@ -30,9 +30,11 @@ Once your test has finished running a reporter will have created HTML assets sho
 
 Tests can also have a trace recorded which can be seen in the Trace Viewer. A trace contains a traversable timeline showing the actions of a test and their implications on the DOM, network requests, console logs and so on.
 
-As the test runs a video (in WebM format) and screenshot (in PNG format) of the final frame can be created which get stored alongside the trace files. These are great tools to have for use in CI.
+As the test runs a video (in WebM format) and screenshot (in PNG format) of the final frame can be created which get stored alongside the trace files. These are great tools to have for use in CI. The traces, videos and screenshots will appear automatically linked to relevant tests within the HTML report.
 
-The traces, videos and screenshots will appear automatically linked to relevant tests within the HTML report.
+Console logging within a test file will run in the node process backing playwright; the messages will output to your terminal. If you want logging to occur in the context of the browswer, they need to be placed inside a `page.evaluate` call.
+
+Tests can pause and resume their execution with `page.pause()` and `page.resume()` respectively. Resuming can even be done in the console of the browser.
 
 ## Useful Links
 
