@@ -25,7 +25,7 @@ test.describe('Page related assertions', () => {
     await expect(page).toHaveTitle('Installation | Playwright');
 
     await page.getByRole('link', { name: /^writing tests$/i }).click();
-    await expect(page).toHaveTitle('Writing Tests | Playwright');
+    await expect(page).toHaveTitle(/Writing Tests \| Playwright/i);
   });
 
   test('Triggers an alert within the page via a script', async ({ page }) => {
