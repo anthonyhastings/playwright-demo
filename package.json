@@ -8,7 +8,7 @@
   "private": true,
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@playwright/test": "^1.28.1",
+    "@playwright/test": "^1.32.1",
     "dotenv": "^16.0.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
@@ -19,7 +19,7 @@
     "prepare": "husky install",
     "show-report": "playwright show-report",
     "test:debug": "playwright test --debug",
-    "test:gui": "playwright test --headed",
+    "test:gui": "playwright test --ui",
     "test:headless": "playwright test",
     "test:tagged": "yarn run test:headless --grep @form"
   }
