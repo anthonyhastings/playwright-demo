@@ -100,13 +100,12 @@ test.describe('Form related interactions / assertions @form', () => {
   });
 
   test('Select controls (native) can be interacted with', async ({ page }) => {
-    await page.goto(
-      'https://interactive-examples.mdn.mozilla.net/pages/tabbed/select.html'
-    );
+    await page.goto('http://autopract.com/selenium/dropdown1/');
 
-    const dropdown = page.getByLabel(/choose a pet/i);
-    await dropdown.selectOption({ label: 'Hamster' });
-    await expect(dropdown).toHaveValue('hamster');
+    const dropdown = page.locator('select');
+    await expect(dropdown).toHaveValue('item1');
+    await dropdown.selectOption({ label: 'Table Tennis' });
+    await expect(dropdown).toHaveValue('item4');
   });
 
   test('Select controls (MUI) can be interacted with', async ({ page }) => {
